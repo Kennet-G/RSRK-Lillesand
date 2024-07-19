@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skøytestatus</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lenker til din eksterne CSS-fil -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <img src="RS_logo.jpeg" alt="Logo" style="height: 50px;">
+        </div>
+        <div class="main-content">
+            <div class="table-container">
+                <h2>Skøytestatus for Lillesand</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Båt</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Årsak</th>
+                            <th scope="col">Merknad</th>
+                            <th scope="col">Forventet Tilbake</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lillesandTableBody">
+                        <!-- Tabellrader legges til dynamisk av JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+    
+            <div class="table-container">
+                <h2>Nabostasjoner</h2>
+                <div class="tables-row">
+                    <div class="table-container">
+                        <h3>Kristiansand</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Båt</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Årsak</th>
+                                    <th scope="col">Merknad</th>
+                                    <th scope="col">Forventet Tilbake</th>
+                                </tr>
+                            </thead>
+                            <tbody id="kristiansandTableBody">
+                                <!-- Tabellrader legges til dynamisk av JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+    
+                    <div class="table-container">
+                        <h3>Arendal</h3>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Båt</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Årsak</th>
+                                    <th scope="col">Merknad</th>
+                                    <th scope="col">Forventet Tilbake</th>
+                                </tr>
+                            </thead>
+                            <tbody id="arendalTableBody">
+                                <!-- Tabellrader legges til dynamisk av JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebox med Windy og Kystinfo -->
+        <div id="sideBox">
+            <div class="widget-container">
+                <div data-windywidget="map"
+                    data-spotid="2662081"
+                    data-appid="86045c98fea88967abda792a3459cbe2"
+                    data-spots="true">
+                </div>
+                <script async="true" data-cfasync="false" type="text/javascript" src="https://windy.app/widget3/windy_map_async.js"></script>
+            </div>
+            <div class="widget-container">
+                <iframe id="kystinfoFrame" src="https://a3.kystverket.no/kystinfo"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="lillesandStatus.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
