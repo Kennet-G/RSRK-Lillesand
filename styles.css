@@ -1,123 +1,154 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    background-color: #ffffff; /* Hvitt bakgrunnsfarge for hele siden */
-}
-
-:root {
-    --top-margin: 0px; /* Juster denne verdien for å endre toppmargen */
-    --left-margin: 20px; /* Juster denne verdien for å endre venstre marg */
-    --right-margin: 20px; /* Juster denne verdien for å endre høyre marg */
-    --sidebox-width: 600px; /* Juster denne verdien for å endre bredden på sideboksen */
+/* ------------------------------
+   Generelt layout og fonter
+------------------------------ */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
 }
 
 .header {
-    position: fixed;
-    top: 0;
-    left: var(--left-margin);
-    right: var(--sidebox-width);
-    background-color: #ffffff; /* Hvitt bakgrunnsfarge for header */
-    padding: 10px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 9998;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,0.9);
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  z-index: 1000;
+  text-align: center;
 }
 
+/* ------------------------------
+   Grid-oppsett
+------------------------------ */
 .wrapper {
-    display: grid;
-    grid-template-columns: var(--left-margin) 1fr var(--sidebox-width);
-    gap: 5px;
-    padding: var(--top-margin) var(--left-margin) 20px var(--right-margin); /* Justert padding for topp, venstre og bunn */
-    width: calc(100% - var(--left-margin) - var(--right-margin)); /* Dynamisk bredde */
-    margin-top: var(--top-margin); /* Toppmargin for hovedinnholdet */
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 20px;
+  padding: 100px 20px 20px 20px;
+  align-items: flex-start;
 }
 
-.main-content {
-    grid-column: 2 / 3;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 80px; /* Toppmarg for å unngå overlapping med header */
+/* Mobilvisning */
+@media (max-width: 768px) {
+  .wrapper {
+    display: block;
+    padding: 100px 10px 20px 10px;
+  }
+
+  #sideBox {
+    margin-top: 30px;
+  }
+
+  .multi-carousel-track img {
+    height: 100px;
+  }
 }
 
+/* ------------------------------
+   Tabell og innhold
+------------------------------ */
 .table-container {
-    background-color: #ffffff; /* Hvitt bakgrunnsfarge for tabell-container */
-    padding: 5px; /* Legg til padding for luft rundt innholdet */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Legg til skyggeeffekt */
-    border-radius: 5px; /* Runde hjørner på tabell-container */
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  overflow-x: auto;
 }
 
-.table-container h2, .table-container h3 {
-    margin-top: 5px;
-    background-color: #ffffff; /* Hvitt bakgrunnsfarge for header */
-    padding: 10px; /* Legg til padding for luft rundt headeren */
+.table-container h2,
+.table-container h3 {
+  margin-top: 0;
+  padding: 10px;
+  background-color: rgba(255,255,255,0.8);
+  border-bottom: 2px solid #007bff;
+  border-radius: 8px 8px 0 0;
 }
 
-.table-container table {
-    width: 100%;
-    table-layout: auto; /* Endret til auto for bedre tilpasning */
-    background-color: #ffffff; /* Hvitt bakgrunnsfarge for tabellen */
-    border-collapse: collapse; /* Slå sammen tabellgrenser */
+.table-container th {
+  background: linear-gradient(to right, #007bffcc, #0056b3cc);
+  color: white;
 }
 
-.table-container table th,
-.table-container table td {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background-color: #ffffff; /* Hvitt bakgrunnsfarge for tabellceller */
-    border: 1px solid #ddd; /* Legg til grenser rundt tabellceller */
-    padding: 8px; /* Legg til padding for luft rundt tekst i cellene */
+.table-container td {
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
-.tables-row {
-    display: flex;
-    flex-direction: column;
-    gap: 5px; /* Øker gap mellom tabell-container */
-}
-
-.tables-row .table-container {
-    flex: 1;
-}
-
+/* ------------------------------
+   Sideboks: Vær og Kystinfo
+------------------------------ */
 #sideBox {
-    grid-column: 3 / 4;
-    position: fixed;
-    top: var(--top-margin); /* Plasser sideboksen med toppmargin */
-    right: 0;
-    width: var(--sidebox-width);
-    max-width: 600px; /* Maksimal bredde på sideboksen */
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .widget-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    background-color: #ffffff; /* Hvitt bakgrunnsfarge for widget-container */
-    overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 400px;
 }
 
-.widget-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
+.widget-container iframe,
+.widget-container > div {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
-.open-windy-button {
-    display: block;
-    margin: 10px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    text-decoration: none;
+/* ------------------------------
+   Horisontal bildekarusell
+------------------------------ */
+.multi-carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 10px;
+  padding: 10px 0;
+}
+
+.multi-carousel-track {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px;
+}
+
+.multi-carousel-track img {
+  height: 320px;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Piltaster */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.carousel-button.left {
+  left: 5px;
+}
+
+.carousel-button.right {
+  right: 5px;
 }
