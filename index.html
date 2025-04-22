@@ -1,97 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skøytestatus</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Lenker til din eksterne CSS-fil -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skøytestatus</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="wrapper">
-        <div class="header">
-            <img src="RS_logo.jpeg" alt="Logo" style="height: 50px;">
-        </div>
-        <div class="main-content">
-            <div class="table-container">
-                <h2>Skøytestatus for Lillesand</h2>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Båt</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Årsak</th>
-                            <th scope="col">Merknad</th>
-                            <th scope="col">Forventet Tilbake</th>
-                        </tr>
-                    </thead>
-                    <tbody id="lillesandTableBody">
-                        <!-- Tabellrader legges til dynamisk av JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-    
-            <div class="table-container">
-                <h2>Nabostasjoner</h2>
-                <div class="tables-row">
-                    <div class="table-container">
-                        <h3>Kristiansand</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Båt</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Årsak</th>
-                                    <th scope="col">Merknad</th>
-                                    <th scope="col">Forventet Tilbake</th>
-                                </tr>
-                            </thead>
-                            <tbody id="kristiansandTableBody">
-                                <!-- Tabellrader legges til dynamisk av JavaScript -->
-                            </tbody>
-                        </table>
-                    </div>
-    
-                    <div class="table-container">
-                        <h3>Arendal</h3>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Båt</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Årsak</th>
-                                    <th scope="col">Merknad</th>
-                                    <th scope="col">Forventet Tilbake</th>
-                                </tr>
-                            </thead>
-                            <tbody id="arendalTableBody">
-                                <!-- Tabellrader legges til dynamisk av JavaScript -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <!-- Sidebox med Windy og Kystinfo -->
-        <div id="sideBox">
-            <div class="widget-container">
-                <div data-windywidget="map"
-                    data-spotid="2662081"
-                    data-appid="86045c98fea88967abda792a3459cbe2"
-                    data-spots="true">
-                </div>
-                <script async="true" data-cfasync="false" type="text/javascript" src="https://windy.app/widget3/windy_map_async.js"></script>
-            </div>
-            <div class="widget-container">
-                <iframe id="kystinfoFrame" src="https://a3.kystverket.no/kystinfo"></iframe>
-            </div>
+  <div class="wrapper">
+
+    <div class="main-content">
+      <div class="header">
+        <img src="RS_logo.jpeg" alt="RS Logo" style="height: 50px;">
+      </div>
+
+      <div class="table-container">
+        <h2>Skøytestatus for Lillesand</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Båt</th>
+              <th>Status</th>
+              <th>Årsak</th>
+              <th>Merknad</th>
+              <th>Forventet Tilbake</th>
+            </tr>
+          </thead>
+          <tbody id="lillesandTableBody"></tbody>
+        </table>
+      </div>
+
+      <div class="table-container">
+        <h2>Nabostasjoner</h2>
+        <div class="tables-row">
+
+          <div class="table-container">
+            <h3>Kristiansand</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Båt</th>
+                  <th>Status</th>
+                  <th>Årsak</th>
+                  <th>Merknad</th>
+                  <th>Forventet Tilbake</th>
+                </tr>
+              </thead>
+              <tbody id="kristiansandTableBody"></tbody>
+            </table>
+          </div>
+
+          <div class="table-container">
+            <h3>Arendal</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Båt</th>
+                  <th>Status</th>
+                  <th>Årsak</th>
+                  <th>Merknad</th>
+                  <th>Forventet Tilbake</th>
+                </tr>
+              </thead>
+              <tbody id="arendalTableBody"></tbody>
+            </table>
+          </div>
+
         </div>
+      </div>
     </div>
 
-    <script src="lillesandStatus.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Vær & kystinfo -->
+    <div id="sideBox">
+      <div class="widget-container">
+        <div data-windywidget="map"
+             data-spotid="2662081"
+             data-appid="86045c98fea88967abda792a3459cbe2"
+             data-spots="true"></div>
+        <script async data-cfasync="false" src="https://windy.app/widget3/windy_map_async.js"></script>
+      </div>
+
+      <div class="widget-container">
+        <iframe id="kystinfoFrame" src="https://a3.kystverket.no/kystinfo"></iframe>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Horisontal bildekarusell med 19 bilder -->
+<div class="multi-carousel-container">
+    <button class="carousel-button left" onclick="scrollCarousel(-1)">❮</button>
+    <div class="multi-carousel-track" id="carouselTrack">
+      <img src="AnneLise-1.jpg" alt="AnneLise 1">
+      <img src="AnneLise-2.jpg" alt="AnneLise 2">
+      <img src="AnneLise-3.jpg" alt="AnneLise 3">
+      <img src="AnneLise-4.jpg" alt="AnneLise 4">
+      <img src="AnneLise-5.jpg" alt="AnneLise 5">
+      <img src="AnneLise-6.jpg" alt="AnneLise 6">
+      <img src="AnneLise-7.jpg" alt="AnneLise 7">
+      <img src="AnneLise-8.jpg" alt="AnneLise 8">
+      <img src="AnneLise-9.jpg" alt="AnneLise 9">
+      <img src="AnneLise-10.jpg" alt="AnneLise 10">
+      <img src="AnneLise-11.jpg" alt="AnneLise 11">
+      <img src="AnneLise-12.jpg" alt="AnneLise 12">
+      <img src="AnneLise-13.jpg" alt="AnneLise 13">
+      <img src="AnneLise-14.jpg" alt="AnneLise 14">
+      <img src="AnneLise-15.jpg" alt="AnneLise 15">
+      <img src="AnneLise-16.jpg" alt="AnneLise 16">
+      <img src="AnneLise-17.jpg" alt="AnneLise 17">
+      <img src="AnneLise-18.jpg" alt="AnneLise 18">
+      <img src="AnneLise-19.jpg" alt="AnneLise 19">
+    </div>
+    <button class="carousel-button right" onclick="scrollCarousel(1)">❯</button>
+  </div>
+  
+
+  <!-- JS -->
+  <script src="lillesandStatus.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Karusell funksjon -->
+  <script>
+    function scrollCarousel(direction) {
+      const track = document.getElementById('carouselTrack');
+      const scrollAmount = 250;
+      track.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
 </body>
 </html>
